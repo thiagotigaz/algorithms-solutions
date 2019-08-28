@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class RepeatedString {
 
+    // https://www.hackerrank.com/challenges/repeated-string/problem
+
     static long repeatedString(String s, long n) {
         if (n < s.length()) {
             return countAs(s, (int) n);

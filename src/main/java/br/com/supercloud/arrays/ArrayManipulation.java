@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class ArrayManipulation {
 
+    // https://www.hackerrank.com/challenges/crush/problem
+
     static long arrayManipulation(int n, int[][] queries) {
         long max = Long.MIN_VALUE;
         long[] sumArr = new long[n];

@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class SockMerchant {
 
-    // Complete the sockMerchant function below.
+    // https://www.hackerrank.com/challenges/sock-merchant/problem
+    
     static int sockMerchant(int n, int[] ar) {
         int maxColor = Arrays.stream(ar).map(Integer::new).max().getAsInt();
         int[] availableColors = new int[maxColor + 1];

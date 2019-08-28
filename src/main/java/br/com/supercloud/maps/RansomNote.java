@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class RansomNote {
 
-    // Complete the checkMagazine function below.
+    // https://www.hackerrank.com/challenges/ctci-ransom-note/
+
     static void checkMagazine(String[] magazine, String[] note) {
         Map<String, Integer> wordFrequency = new HashMap<>();
         for (String word : magazine) {

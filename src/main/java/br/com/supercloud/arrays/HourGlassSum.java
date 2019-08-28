@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class HourGlassSum {
 
+    // https://www.hackerrank.com/challenges/2d-array/problem
+
     static int hourglassSum(int[][] arr) {
         int n = arr.length - 2, m = arr[0].length - 2;
         int maxHourGlassSum = Integer.MIN_VALUE;

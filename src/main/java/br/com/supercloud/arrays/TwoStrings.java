@@ -2,7 +2,8 @@ package br.com.supercloud.arrays;
 
 public class TwoStrings {
 
-    // Complete the twoStrings function below.
+    // https://www.hackerrank.com/challenges/two-strings/problem
+
     static String twoStrings(String s1, String s2) {
         boolean[] containedLetters = new boolean[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
         for (char c : s1.toCharArray()) {

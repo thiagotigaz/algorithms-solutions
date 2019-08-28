@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class EqualizeTheArray {
 
+    // https://www.hackerrank.com/challenges/equality-in-a-array
+
     static int equalizeArray(int[] arr) {
         int[] frequency = new int[Arrays.stream(arr).max().getAsInt() + 1];
         int maxFreqIndex = 0;

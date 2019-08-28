@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class JumpingOnClouds {
 
+    // https://www.hackerrank.com/challenges/jumping-on-the-clouds
+
     static int jumpingOnClouds(int[] c) {
         int jumps = -1;
         for (int i = 0; i < c.length; i++, jumps++) {

@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class NewYearChaos {
 
+    // https://www.hackerrank.com/challenges/new-year-chaos/problem
+
     static void minimumBribes(int[] q) {
         int bribes = 0;
         for (int i = q.length - 1; i >= 0; i--) {

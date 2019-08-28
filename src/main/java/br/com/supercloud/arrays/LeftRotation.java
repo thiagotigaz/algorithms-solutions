@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class LeftRotation {
 
+    // https://www.hackerrank.com/challenges/ctci-array-left-rotation/problem
+
     static int[] rotLeft(int[] a, int d) {
         int[] rotNumbers = new int[d];
         // Save numbers that will be the beginning of the array

@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class MinimumSwaps2 {
 
+    // https://www.hackerrank.com/challenges/minimum-swaps-2/problem
+
     static int minimumSwaps(int[] arr) {
         int[] temp = new int[arr.length + 1];
         for (int i = 0; i < arr.length; i++) {

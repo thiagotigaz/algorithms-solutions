@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class QueensAttack {
 
+    // https://www.hackerrank.com/challenges/queens-attack-2/problem
+
     static int queensAttack(int n, int k, int rQueen, int cQueen, int[][] obstacles) {
         if (n <= 1) {
             return 0;

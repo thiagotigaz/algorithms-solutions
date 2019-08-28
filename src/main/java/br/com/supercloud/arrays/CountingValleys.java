@@ -2,6 +2,8 @@ package br.com.supercloud.arrays;
 
 public class CountingValleys {
 
+    // https://www.hackerrank.com/challenges/counting-valleys/problem
+
     private static final char DOWN_STEP = 'D';
     private static final char UP_STEP = 'U';
 

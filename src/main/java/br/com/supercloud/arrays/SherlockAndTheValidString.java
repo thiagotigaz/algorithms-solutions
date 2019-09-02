@@ -23,8 +23,8 @@ public class SherlockAndTheValidString {
         }
 
         boolean oneOff = false;
-        int mostCommonFreq = Arrays.stream(frequency)
-                .filter(x -> x > 0) // Filter out letters that are not present
+        int[] filteredArray = Arrays.stream(frequency).filter(x -> x > 0).toArray();
+        int mostCommonFreq = Arrays.stream(filteredArray)
                 .boxed() // Convert to Integer
                 .collect(Collectors.groupingBy(Function.identity(),
                         counting())) // Group to map frequency value/count of letters with the frequency value
@@ -34,7 +34,7 @@ public class SherlockAndTheValidString {
                         .getValue())) // Get the maximum common frequency between all letters
                 .get()
                 .getKey(); // Return the key which should be used as base
-        for (int freq : Arrays.stream(frequency).filter(x -> x > 0).toArray()) {
+        for (int freq : filteredArray) {
             if (freq == mostCommonFreq + 1 || freq == mostCommonFreq - 1 || (freq == 1 && mostCommonFreq > 1)) {
                 if (oneOff) {
                     return "NO";

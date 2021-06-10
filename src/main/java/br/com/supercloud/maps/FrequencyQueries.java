@@ -1,56 +1,55 @@
 package br.com.supercloud.maps;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FrequencyQueries {
+    private static final int ADD = 1;
+    private static final int REMOVE = 2;
+    private static final int CHECK = 3;
 
     // https://www.hackerrank.com/challenges/frequency-queries/problem
 
-    static List<Integer> freqQuery(int[][] queries) {
+    static List<Integer> freqQuery(List<List<Integer>> queries) {
         Map<Integer, Integer> keyByFreq = new HashMap<>();
-        Map<Integer, Integer> freqByKeys = new HashMap<>();
+        Map<Integer, Integer> freqByKey = new HashMap<>();
         List<Integer> result = new ArrayList<>();
-        for (int[] query : queries) {
-            int op = query[0];
-            int val = query[1];
-            int valFreq;
-            if (op == 1) {
-                valFreq = keyByFreq.merge(val, 1, Integer::sum);
-                updateFrequenciesMap(val, valFreq, valFreq - 1, freqByKeys);
-            } else if (op == 2 && keyByFreq.containsKey(val) && keyByFreq.get(val) > 0) {
-                valFreq = keyByFreq.merge(val, -1, Integer::sum);
-                updateFrequenciesMap(val, valFreq, valFreq + 1, freqByKeys);
-            } else if (op == 3) {
-                result.add(freqByKeys.containsKey(val) && freqByKeys.get(val) > 0 ? 1 : 0);
+        for (List<Integer> query : queries) {
+            int op = query.get(0);
+            int val = query.get(1);
+            if (op == ADD) {
+                Integer curFreq = keyByFreq.merge(val, 1, Integer::sum);
+                updateFreqByKey(freqByKey, curFreq, curFreq -1);
+            }
+            if (op == REMOVE && keyByFreq.containsKey(val) && keyByFreq.get(val) > 0) {
+                Integer curFreq = keyByFreq.merge(val, -1, Integer::sum);
+                updateFreqByKey(freqByKey, curFreq, curFreq + 1);
+            }
+            if (op == CHECK) {
+                result.add(freqByKey.getOrDefault(val, 0) > 0 ? 1 : 0);
             }
         }
         return result;
     }
 
-    private static void updateFrequenciesMap(int val, int curValFreq, int previousValFreq,
-            Map<Integer, Integer> freqByKeys) {
-        Integer freq = freqByKeys.getOrDefault(previousValFreq, 0);
-        if (freq > 0) {
-            if (freq - 1 > 0) {
-                freqByKeys.put(previousValFreq, freq - 1);
-            } else {
-                freqByKeys.remove(previousValFreq);
-            }
+    private static void updateFreqByKey(Map<Integer, Integer> freqByKey, Integer curFreq, Integer prevFreq) {
+        if (prevFreq > 0 && freqByKey.get(prevFreq) > 0) {
+            freqByKey.merge(prevFreq, -1, Integer::sum);
         }
-        freqByKeys.merge(curValFreq, 1, Integer::sum);
+        freqByKey.merge(curFreq, 1, Integer::sum);
     }
+
 
     public static void main(String[] args) {
         freqQuery(
-                new int[][]{
-                        new int[]{3, 4},
-                        new int[]{2, 1003},
-                        new int[]{1, 16},
-                        new int[]{3, 1}
-                }
+                Arrays.asList(
+                        Arrays.asList(3, 4),
+                        Arrays.asList(1, 4),
+                        Arrays.asList(2, 1003),
+                        Arrays.asList(1, 16),
+                        Arrays.asList(1, 16),
+                        Arrays.asList(3, 2),
+                        Arrays.asList(3, 1)
+                )
         ).forEach(System.out::println);
     }
 

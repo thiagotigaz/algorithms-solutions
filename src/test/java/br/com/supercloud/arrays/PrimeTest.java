@@ -1,4 +1,4 @@
-package br.com.supercloud;
+package br.com.supercloud.arrays;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

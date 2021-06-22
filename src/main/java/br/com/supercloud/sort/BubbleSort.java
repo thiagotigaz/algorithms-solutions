@@ -1,4 +1,4 @@
-package br.com.supercloud.lists;
+package br.com.supercloud.sort;
 
 import java.util.Arrays;
 import java.util.List;

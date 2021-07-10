@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class BreadthFirstSearch {
+public class WalkablePathBFS {
 
     private static final int WALKABLE_PATH_VALUE = 1;
     private static final int DESTINATION_PATH_VALUE = 9;
@@ -97,7 +97,7 @@ public class BreadthFirstSearch {
     }
 
     public static void main(String[] args) {
-        BreadthFirstSearch bfs = new BreadthFirstSearch();
+        WalkablePathBFS bfs = new WalkablePathBFS();
         Coordinate src = new Coordinate(0, 0); // top left corner
         Coordinate dst = new Coordinate(3, 2); // 9
         Node node = bfs.doSearch(MATRIX, src, dst);

@@ -1,7 +1,5 @@
 package br.com.supercloud.strings;
 
-import java.util.stream.IntStream;
-
 public class CommonChild {
 
     // https://www.hackerrank.com/challenges/common-child/problem

@@ -2,7 +2,6 @@ package br.com.supercloud.sort;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class MaximumToys {
@@ -16,8 +15,7 @@ public class MaximumToys {
         int maxToys = 0;
         int spent = 0;
         Collections.sort(toysPrice);
-        for (int i = 0; i < toysPrice.size(); i++) {
-            int toyPrice = toysPrice.get(i);
+        for (int toyPrice : toysPrice) {
             if (spent + toyPrice > budget) {
                 return maxToys;
             }

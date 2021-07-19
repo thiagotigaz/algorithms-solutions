@@ -13,9 +13,8 @@ public class BubbleSort {
                 Integer a = arr.get(j);
                 Integer b = arr.get(j + 1);
                 if (a > b) {
-                    Integer aux = a;
                     arr.set(j, b);
-                    arr.set(j + 1, aux);
+                    arr.set(j + 1, a);
                     totalSwaps++;
                     interationSwaps++;
                 }

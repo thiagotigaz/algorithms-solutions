@@ -2,7 +2,6 @@ package br.com.supercloud.queues;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class BalancedBrackets {
     // https://www.hackerrank.com/challenges/balanced-brackets

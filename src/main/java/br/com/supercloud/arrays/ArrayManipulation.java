@@ -7,10 +7,10 @@ public class ArrayManipulation {
     static long arrayManipulation(int n, int[][] queries) {
         long max = Long.MIN_VALUE;
         long[] sumArr = new long[n];
-        for (int i = 0; i < queries.length; i++) {
-            int a = queries[i][0];
-            int b = queries[i][1];
-            int k = queries[i][2];
+        for (int[] query : queries) {
+            int a = query[0];
+            int b = query[1];
+            int k = query[2];
             sumArr[a - 1] += k;
             if (b < sumArr.length) {
                 sumArr[b] -= k;

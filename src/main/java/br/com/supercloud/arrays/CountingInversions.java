@@ -8,8 +8,7 @@ public class CountingInversions {
     public static long countInversions(List<Integer> arr) {
         // Write your code here
         int[] ints = arr.stream().mapToInt((i) -> i).toArray();
-        long swaps = mergeSortCount(ints, new int[ints.length], 0, ints.length - 1);
-        return swaps;
+        return mergeSortCount(ints, new int[ints.length], 0, ints.length - 1);
     }
 
     private static long mergeSortCount(int[] arr, int[] aux, int from, int to) {

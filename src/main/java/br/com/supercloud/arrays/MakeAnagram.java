@@ -19,8 +19,8 @@ public class MakeAnagram {
                 frequency[charNumber]--;
             }
         }
-        for (int i = 0; i < frequency.length; i++) {
-            numDeletes += Math.abs(frequency[i]);
+        for (int j : frequency) {
+            numDeletes += Math.abs(j);
         }
         return numDeletes;
     }

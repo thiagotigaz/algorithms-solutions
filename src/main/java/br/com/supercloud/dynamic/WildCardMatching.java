@@ -82,8 +82,9 @@ public class WildCardMatching {
 
 
     public static void main(String[] args) {
-        System.out.println(strmatch("baaabab", "*****ba*****ab"));
-        System.out.println(strmatch("baaabab", "a*****ab"));
+//        System.out.println(strmatch("baaabab", "*****ba*****ab"));
+//        System.out.println(strmatch("baaabab", "a*****ab"));
+        System.out.println(strmatch("thiago", "t*ag*"));
     }
 
     private static boolean strmatch(String s, String p) {

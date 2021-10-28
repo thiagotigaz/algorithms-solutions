@@ -2,12 +2,18 @@ package br.com.supercloud.trees;
 
 public class TreeNode {
 
-    int value;
-    TreeNode left;
-    TreeNode right;
+    public int value;
+    public char letter;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(int value) {
         this.value = value;
+    }
+
+    public TreeNode(int value, char letter) {
+        this.value = value;
+        this.letter = letter;
     }
 
     @Override

@@ -6,16 +6,22 @@ public class HowSum {
 
 
     public static void main(String[] args) {
+        System.out.println(howSumTabulation(7, new int[]{2, 3}));
+        System.out.println(howSumTabulation(7, new int[]{5, 3, 4, 7}));
+        System.out.println(howSumTabulation(7, new int[]{2, 4}));
+        System.out.println(howSumTabulation(8, new int[]{2, 3, 5}));
+        System.out.println();
+
         System.out.println(howSum(7, new int[]{2, 3}));
         System.out.println(howSum(7, new int[]{5, 3, 4, 7}));
         System.out.println(howSum(7, new int[]{2, 4}));
         System.out.println(howSum(8, new int[]{2, 3, 5}));
         System.out.println();
-        System.out.println(howSumWithMemo(7, new int[]{2, 3}));
-        System.out.println(howSumWithMemo(7, new int[]{5, 3, 4, 7}));
-        System.out.println(howSumWithMemo(7, new int[]{2, 4}));
-        System.out.println(howSumWithMemo(8, new int[]{2, 3, 5}));
-        System.out.println(howSumWithMemo(3000, new int[]{7, 14, 100}));
+//        System.out.println(howSumWithMemo(7, new int[]{2, 3}));
+//        System.out.println(howSumWithMemo(7, new int[]{5, 3, 4, 7}));
+//        System.out.println(howSumWithMemo(7, new int[]{2, 4}));
+//        System.out.println(howSumWithMemo(8, new int[]{2, 3, 5}));
+//        System.out.println(howSumWithMemo(3000, new int[]{7, 14, 100}));
     }
 
     private static List<Integer> howSum(int targetSum, int[] numbers) {
@@ -51,5 +57,23 @@ public class HowSum {
         }
         memo.put(targetSum, null);
         return null;
+    }
+
+    private static List<Integer> howSumTabulation(int targetSum, int[] numbers) {
+        ArrayList<Integer>[] result = new ArrayList[targetSum + 1];
+        result[0] = new ArrayList<>();
+        for (int i = 0; i <= targetSum; i++) {
+            if (result[i] != null) {
+                for (int n : numbers) {
+                    if (i + n < result.length) {
+                        ArrayList<Integer> newArr = new ArrayList<>(result[i].size() + 1);
+                        newArr.addAll(result[i]);
+                        newArr.add(n);
+                        result[i + n] = newArr;
+                    }
+                }
+            }
+        }
+        return result[targetSum];
     }
 }

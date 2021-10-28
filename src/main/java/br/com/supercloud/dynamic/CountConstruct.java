@@ -29,21 +29,45 @@ public class CountConstruct {
         return totalCount;
     }
 
+    public static int countConstructTabulation(String targetWord, Set<String> dictionary) {
+        int m = targetWord.length();
+        int[] result = new int[m + 1];
+        result[0] = 1;
+        for (int i = 0; i <= m; i++) {
+            if (result[i] > 0) {
+                for (String word : dictionary) {
+                    String subStr = i + word.length() <= targetWord.length()
+                            ? targetWord.substring(i, i + word.length())
+                            : targetWord.substring(i);
+                    if (subStr.equals(word)) {
+                        result[i + word.length()] += result[i];
+                    }
+                }
+            }
+        }
+        return result[m];
+    }
+
     public static void main(String[] args) {
         System.out.println(countConstruct("purple", new HashSet<>(Arrays.asList("purp", "p", "ur", "le", "puurpl")))); // 2
         System.out.println(countConstructWithMemo("purple", new HashSet<>(Arrays.asList("purp", "p", "ur", "le", "puurpl")), new HashMap<>())); // 2
+        System.out.println(countConstructTabulation("purple", new HashSet<>(Arrays.asList("purp", "p", "ur", "le", "puurpl")))); // 2
 
         System.out.println(countConstruct("abcdef", new HashSet<>(Arrays.asList("ab", "abc", "cd", "def", "abcd")))); // 1
         System.out.println(countConstructWithMemo("abcdef", new HashSet<>(Arrays.asList("ab", "abc", "cd", "def", "abcd")), new HashMap<>())); // 1
+        System.out.println(countConstructTabulation("abcdef", new HashSet<>(Arrays.asList("ab", "abc", "cd", "def", "abcd")))); // 1
 
         System.out.println(countConstruct("skateboard", new HashSet<>(Arrays.asList("bo", "rd", "ate", "t", "ska", "sk", "boar")))); // 0
         System.out.println(countConstructWithMemo("skateboard", new HashSet<>(Arrays.asList("bo", "rd", "ate", "t", "ska", "sk", "boar")), new HashMap<>())); // 0
+        System.out.println(countConstructTabulation("skateboard", new HashSet<>(Arrays.asList("bo", "rd", "ate", "t", "ska", "sk", "boar")))); // 0
 
         System.out.println(countConstruct("enterapotentpot", new HashSet<>(Arrays.asList("a", "p", "ent", "enter", "ot", "o", "t")))); // 4
         System.out.println(countConstructWithMemo("enterapotentpot", new HashSet<>(Arrays.asList("a", "p", "ent", "enter", "ot", "o", "t")), new HashMap<>())); // 4
+        System.out.println(countConstructTabulation("enterapotentpot", new HashSet<>(Arrays.asList("a", "p", "ent", "enter", "ot", "o", "t")))); // 4
 
         // Next line takes forever without memo
         // System.out.println(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", new HashSet<>(Arrays.asList("e", "ee", "eee", "eeee", "eeeee", "eeeeee", "eeeeeee")))); // 0
         System.out.println(countConstructWithMemo("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", new HashSet<>(Arrays.asList("e", "ee", "eee", "eeee", "eeeee", "eeeeee", "eeeeeee")), new HashMap<>())); // 0
+        System.out.println(countConstructTabulation("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", new HashSet<>(Arrays.asList("e", "ee", "eee", "eeee", "eeeee", "eeeeee", "eeeeeee")))); // 0
     }
 }

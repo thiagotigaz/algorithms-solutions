@@ -2,13 +2,20 @@ package br.com.supercloud.trees;
 
 public class BstRedo {
 
-    public static boolean isBst(TreeNode root, Integer min, Integer max) {
+    /*public static boolean isBst(TreeNode root, Integer min, Integer max) {
         if (root == null) {
             return true;
         }
         if ((min != null && root.value <= min) || (max != null && root.value > max)) {
             return false;
         }
+        return isBst(root.left, min, root.value) && isBst(root.right, root.value, max);
+    }*/
+
+
+    public static boolean isBst(TreeNode root, Integer min, Integer max) {
+        if (root == null) return true;
+        if ((min != null && root.value <= min) || (max != null && root.value > max)) return false;
         return isBst(root.left, min, root.value) && isBst(root.right, root.value, max);
     }
 

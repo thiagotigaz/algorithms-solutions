@@ -2,22 +2,15 @@ package br.com.supercloud.trees;
 
 public class CheckBalanced {
     static int getHeight(TreeNode root) {
-        if (root == null) {
-            return -1;
-        }
+        if (root == null) return -1;
         return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
     }
 
     static boolean isBalanced(TreeNode root) {
-      if (root == null) {
-          return true;
-      }
-      int heightDiff = getHeight(root.left) - getHeight(root.right);
-      if (Math.abs(heightDiff) > 1) {
-          return false;
-      } else {
-          return isBalanced(root.left) && isBalanced(root.right);
-      }
+        if (root == null) return true;
+        int heightDiff = Math.abs(getHeight(root.left) - getHeight(root.right));
+        if (heightDiff > 1) return false;
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 
     public static void main(String[] args) {
@@ -55,7 +48,7 @@ public class CheckBalanced {
 
         System.out.println(isBalanced(parent));
 
-        parent.right.right=null;
+        parent.right.right = null;
         System.out.println(isBalanced(parent));
     }
 }

@@ -10,7 +10,14 @@ public class CanSum {
         System.out.println(canSum(7, new int[]{5, 3, 4, 7}));
         System.out.println(canSum(7, new int[]{2, 4}));
         System.out.println(canSum(8, new int[]{2, 3, 5}));
-        System.out.println(canSumWithMemo(3000, new int[]{7, 14}));
+
+        System.out.println();
+        System.out.println(canSumTabulation(7, new int[]{2, 3}));
+        System.out.println(canSumTabulation(7, new int[]{5, 3, 4, 7}));
+        System.out.println(canSumTabulation(7, new int[]{2, 4}));
+        System.out.println(canSumTabulation(8, new int[]{2, 3, 5}));
+        System.out.println(canSumTabulation(300, new int[]{7, 14}));
+//        System.out.println(canSumWithMemo(3000, new int[]{7, 14}));
     }
 
     private static boolean canSum(int targetSum, int[] numbers) {
@@ -42,5 +49,20 @@ public class CanSum {
         }
         memo.put(targetSum, false);
         return false;
+    }
+
+    private static boolean canSumTabulation(int targetSum, int[] numbers) {
+        boolean[] result = new boolean[targetSum + 1];
+        result[0] = true;
+        for (int i = 0; i < result.length; i++) {
+            if (result[i]) {
+                for (int n : numbers) {
+                    if (i + n < result.length) {
+                        result[i + n] = true;
+                    }
+                }
+            }
+        }
+        return result[targetSum];
     }
 }

@@ -56,8 +56,24 @@ public class Fibonnaci {
         return f[n];
     }
 
+    static long fibTabulation(int n) {
+        if (n <= 2) {
+            return 1;
+        }
+        long[] f = new long[n + 1]; // 1 extra to handle case, n = 0
+        f[1] = 1;
+
+        for (int i = 0; i < n; i++) {
+            f[i + 1] += f[i];
+            if (i < n - 1)
+                f[i + 2] = f[i];
+        }
+
+        return f[n];
+    }
+
     public static void main(String[] args) {
-        System.out.println(fibRecursive(7));
+        /*System.out.println(fibRecursive(7));
         System.out.println(fibRecursive(8));
         // System.out.println(fibRecursive(50)); This is undoable due to the 2 to the n time complexity
         System.out.println(fibRecursiveWithMemo(7));
@@ -68,6 +84,10 @@ public class Fibonnaci {
         System.out.println(fib(50));
         System.out.println(fibDynamic(7));
         System.out.println(fibDynamic(8));
-        System.out.println(fibDynamic(50));
+        System.out.println(fibDynamic(50));*/
+        System.out.println(fibTabulation(6));
+        System.out.println(fibTabulation(7));
+        System.out.println(fibTabulation(8));
+        System.out.println(fibTabulation(50));
     }
 }

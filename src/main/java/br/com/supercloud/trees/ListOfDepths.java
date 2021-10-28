@@ -7,25 +7,23 @@ import java.util.LinkedList;
 public class ListOfDepths {
 
     static ArrayList<LinkedList<TreeNode>> createLinkedListDFS(TreeNode root) {
-        ArrayList<LinkedList<TreeNode>> lists = new ArrayList<>();
-        createLinkedListDFS(root, lists, 0);
-        return lists;
+        ArrayList<LinkedList<TreeNode>> result = new ArrayList<>();
+        createLinkedListDFS(root, result, 0);
+        return result;
     }
 
-    static ArrayList<LinkedList<TreeNode>> createLinkedListDFS(TreeNode root, ArrayList<LinkedList<TreeNode>> lists, int level) {
-        if (root != null) {
-            LinkedList<TreeNode> list;
-            if (level == lists.size()) {
-                list = new LinkedList<>();
-                lists.add(list);
-            } else {
-                list = lists.get(level);
-            }
-            list.add(root);
-            createLinkedListDFS(root.left, lists, level + 1);
-            createLinkedListDFS(root.right, lists, level + 1);
+    static void createLinkedListDFS(TreeNode root, ArrayList<LinkedList<TreeNode>> lists, int level) {
+        if (root == null) return;
+        LinkedList<TreeNode> list;
+        if (lists.size() == level) {
+            list = new LinkedList<>();
+            lists.add(list);
+        } else {
+            list = lists.get(level);
         }
-        return lists;
+        list.add(root);
+        createLinkedListDFS(root.left, lists, level + 1);
+        createLinkedListDFS(root.right, lists, level + 1);
     }
 
     /*
@@ -41,16 +39,11 @@ public class ListOfDepths {
             result.add(current);
             LinkedList<TreeNode> parents = current;
             current = new LinkedList<>();
-            for (TreeNode n : parents) {
-                if (n.left != null) {
-                    current.add(n.left);
-                }
-                if (n.right != null) {
-                    current.add(n.right);
-                }
+            for (TreeNode parent : parents) {
+                if (parent.left != null) current.add(parent.left);
+                if (parent.right != null) current.add(parent.right);
             }
         }
-
         return result;
     }
 
@@ -73,7 +66,7 @@ public class ListOfDepths {
         TreeNode lvlThreeA = new TreeNode(8);
         TreeNode lvlThreeB = new TreeNode(9);
         lvlTwoA.left = lvlThreeA;
-        lvlTwoA.right = lvlThreeA;
+        lvlTwoA.right = lvlThreeB;
         TreeNode lvlThreeC = new TreeNode(10);
         TreeNode lvlThreeD = new TreeNode(11);
         lvlTwoB.left = lvlThreeC;

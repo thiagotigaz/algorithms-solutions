@@ -35,11 +35,12 @@ public class BstToCircularDLinkedList {
         head.left = prev;
     }
 
+
     /*private void bstToDLinkedList(TreeNode node) {
         if (node == null) return;
-        size++;
+        size++; // not part of the algo, just used for printing
         bstToDLinkedList(node.left);
-        if (prev == null) {
+        if (head == null) {
             head = node;
             prev = node;
         } else {
@@ -47,6 +48,7 @@ public class BstToCircularDLinkedList {
             prev.right = node;
             prev = node;
         }
+
         bstToDLinkedList(node.right);
     }*/
 
@@ -62,7 +64,6 @@ public class BstToCircularDLinkedList {
             prev.right = node;
             prev = node;
         }
-
         bstToDLinkedList(node.right);
     }
 
